@@ -3,572 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Service</title>
-
+<title>Sole Proprietorship Registration</title>
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- <link rel="stylesheet" href="style.css"> -->
-<link rel="stylesheet" href="style.css?v=2">
-
-<script src="script.js" defer></script>
 
 <style>
-:root{
-  --accent:#4f46e5;
-  --accent-light:#6366f1;
-  --gold:#f59e0b;
-  --bg:#f8fafc;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #eef4ff;
+  color: #0a2342;
 }
 
-/* GLOBAL */
-body{
-  margin:0;
-  font-family:'Segoe UI','Inter',sans-serif;
-  background:#F6F9FF;
-  color:#0f172a;
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(10,35,66,0.85), rgba(10,35,66,0.85)),
+  url('https://images.unsplash.com/photo-1556761175-b413da4baf72');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 110px 20px;
 }
 
-/* CONTAINER (WIDER) */
-.container{
-  padding:90px 8%;
-  max-width:1200px;   /* 🔥 bigger layout */
-  margin:auto;
+.hero h1 {
+  font-size: 44px;
 }
 
-/* ================= STEP BAR ================= */
-.steps-bar{
-  display:flex;
-  justify-content:space-between;
-  position:relative;
-  margin-bottom:60px; /* more breathing */
+.hero p {
+  max-width: 750px;
+  margin: auto;
+  font-size: 18px;
+  opacity: 0.9;
 }
 
-/* BACK LINE */
-.steps-bar::before{
-  content:"";
-  position:absolute;
-  top:28px;
-  left:calc(60px);              /* 🔥 start from center of first circle */
-  width:calc(100% - 120px);     /* 🔥 end at last circle */
-  height:6px;
-  background:#d3d9e0;
-  border-radius:10px;
+/* SECTION */
+.section {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
-/* PROGRESS LINE */
-.steps-bar::after{
-  content:"";
-  position:absolute;
-  top:28px;
-  left:calc(50px);
-  width:0%;
-  height:6px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-light));
-  border-radius:10px;
-  transition:0.4s;
+/* FEATURE IMAGE */
+.feature-img {
+  width: 100%;
+  border-radius: 15px;
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* STEP */
-.step-item{
-  flex:1;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  z-index:2;
+/* ACCORDION CARD STYLE */
+.accordion {
+  margin-bottom: 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
-/* BIGGER CIRCLE */
-.circle{
-  width:60px;           /* 🔥 bigger */
-  height:60px;
-  border-radius:50%;
-  background:#d3dcfa;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:auto;
-  font-weight:700;
-  font-size:18px;
-  transition:0.35s;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+.accordion-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 18px;
+  background: none;
+  color: #0a2342;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* STEP TEXT (BIGGER) */
-.step-item span{
-  display:block;
-  margin-top:12px;
-  font-size:16px;
-  color:#64748b;
-  transition:0.3s;
+.accordion-btn span {
+  font-size: 22px;
+  transition: 0.3s;
 }
 
-/* ACTIVE STEP */
-.step-item.active .circle{
-  background:linear-gradient(135deg,var(--accent),var(--accent-light));
-  color:#fff;
-  transform:scale(1.2);
-  box-shadow:0 12px 30px rgba(79,70,229,0.4);
+.accordion.active .accordion-btn span {
+  transform: rotate(45deg);
 }
 
-.step-item.active span{
-  color:var(--accent);
-  font-weight:700;
+/* CONTENT */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 18px;
 }
 
-/* COMPLETED */
-.step-item.completed .circle{
-  background:linear-gradient(135deg,var(--gold),#f97316);
-  color:#fff;
+.accordion-content p,
+.accordion-content ul {
+  margin: 15px 0;
+  line-height: 1.6;
 }
 
-/* ================= CONTENT ================= */
-.step-content-box{
-  background:rgba(255,255,255,0.85);
-  backdrop-filter: blur(18px);
-  border-radius:24px;
-  padding:50px;        /* 🔥 bigger content area */
-  box-shadow:0 25px 70px rgba(0,0,0,0.1);
-  border:1px solid rgba(255,255,255,0.4);
+ul {
+  padding-left: 20px;
 }
 
-/* PANES */
-.step-pane{
-  display:none;
-  animation:fadeUp 0.5s ease;
+/* CTA */
+.cta {
+  background: #0a2342;
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
 }
 
-.step-pane.active{
-  display:block;
+.cta h2 {
+  font-size: 32px;
 }
 
-/* ================= TEXT ================= */
-
-/* PARAGRAPH (BIG + READABLE) */
-p{
-  font-size:19px;      /* 🔥 larger text */
-  line-height:2;
-  color:#1e293b;
-  max-width:900px;
+.cta button {
+  padding: 15px 30px;
+  background: #0077b6;
+  color: white;
+  border: none;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
 }
 
-/* LIST */
-ul{
-  padding-left:22px;
-}
-
-/* LIST ITEM */
-li{
-  margin-bottom:16px;
-  line-height:1.9;
-  font-size:17px;     /* 🔥 bigger */
-  color:#334155;
-  padding-left:6px;
-  transition:0.3s;
-}
-
-/* HOVER */
-li:hover{
-  color:var(--accent);
-  transform:translateX(6px);
-}
-
-/* BULLET */
-li::marker{
-  color:var(--accent);
-}
-
-/* ================= ANIMATION ================= */
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-
-  .container{
-    padding:50px 5%;
-  }
-
-  .steps-bar{
-    overflow-x:auto;
-    gap:30px;
-  }
-
-  .step-item{
-    min-width:100px;
-  }
-
-  .circle{
-    width:48px;
-    height:48px;
-    font-size:16px;
-  }
-
-  .step-content-box{
-    padding:25px;
-  }
-
-  p{
-    font-size:16px;
-  }
-
-  li{
-    font-size:15px;
-  }
-}
-
-.page-header{
-  text-align:center;                 /* ✅ center everything */
-  margin-bottom:60px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-/* TITLE */
-#title{
-  font-size:42px;                   /* 🔥 bigger */
-  font-weight:800;
-  margin-bottom:12px;
-  letter-spacing:0.5px;
-
-  background:linear-gradient(90deg,#4f46e5,#6366f1,#22c55e);
-  
-  -webkit-text-fill-color:transparent;
-
-  text-shadow:0 8px 25px rgba(79,70,229,0.25);
-}
-
-/* SUBTITLE */
-#subtitle{
-  font-size:19px;
-  color:#475569;
-  line-height:1.9;
-  max-width:750px;
-  opacity:0.9;
-
-  /* subtle animation feel */
-  animation:fadeUp 0.6s ease;
-}
-
-/* OPTIONAL: small badge above title */
-.page-header::before{
-  content:"Service Overview";
-  font-size:13px;
-  font-weight:600;
-  color:#4f46e5;
-  background:rgba(79,70,229,0.1);
-  padding:6px 14px;
-  border-radius:20px;
-  margin-bottom:12px;
+.cta button:hover {
+  background: #005f8f;
+  transform: scale(1.05);
 }
 </style>
+
 </head>
-
 <body>
-
 <div id="header"></div>
+<!-- HERO -->
+<section class="hero">
+  <h1>Sole Proprietorship Registration</h1>
+  <p>
+    Start your business with full control, minimal compliance, and quick setup.
+    Ideal for freelancers, shop owners, and entrepreneurs.
+  </p>
+</section>
 
-<div class="container">
+<div class="section">
 
-  <div class="page-header">
-  <h1 id="title"></h1>
-  <p id="subtitle"></p>
+
+
+<!-- ABOUT -->
+<div class="accordion">
+  <button class="accordion-btn">
+    What is Sole Proprietorship? <span>+</span>
+  </button>
+  <div class="accordion-content">
+    <p>
+     If you’re someone who wants complete control over your business decisions without navigating complex processes, sole proprietorship registration in India is the perfect starting point. You can operate under your own name or choose a unique business name to build a strong brand identity. With simple documentation like Aadhaar, PAN, and basic business proof, you can get your business up and running quickly. Plus, you can easily apply for GST registration, Udyam Registration (MSME), Shop & Establishment License, and a Current Bank Account to give your business legal recognition and credibility.
+ <br><br>Whether you’re a freelancer, shop owner, consultant, or home-based entrepreneur, this structure lets you manage operations smoothly while enjoying full profits and tax benefits applicable to individuals. Ready to turn your idea into a successful business? Begin your sole proprietorship registration journey today and step confidently into the world of entrepreneurship!
+
+    </p>
+  </div>
 </div>
 
-  <!-- STEP BAR -->
-  <div class="steps-bar">
-    <div class="step-item active" data-step="about">
-      <div class="circle">1</div>
-      <span>About</span>
-    </div>
-    <div class="step-item" data-step="documents">
-      <div class="circle">2</div>
-      <span>Required Documents</span>
-    </div>
-    <div class="step-item" data-step="process">
-      <div class="circle">3</div>
-      <span>Process</span>
-    </div>
-    <div class="step-item" data-step="advantages">
-      <div class="circle">4</div>
-      <span>Advantages</span>
-    </div>
-    <div class="step-item" data-step="drawbacks">
-      <div class="circle">5</div>
-      <span>Drawbacks</span>
-    </div>
+<!-- ADVANTAGES -->
+<div class="accordion">
+  <button class="accordion-btn">
+    Advantages <span>+</span>
+  </button>
+  <div class="accordion-content">
+    <p>
+     Registering a sole proprietorship offers several advantages, making it a popular choice among freelancers, consultants, and small business owners in India.
+<br><br>Simple and quick Registration process
+The registration process is straightforward, requiring minimal documentation and significantly less time compared to other business structures like companies or LLPs.
+ <br>Low cost of formation
+Setting up a proprietorship involves very low costs. There are no hefty government fees or complicated compliance costs, making it a cost-effective choice for startups and small business owners.
+ Full control over business
+The proprietor, as the sole owner, holds full control over all business decisions. This flexibility allows for faster decision-making without the need for consensus or board meetings.
+ Minimal legal formalities
+Sole Proprietorship registration comes with fewer legal compliances. Unlike private limited companies, proprietorships are not required to hold annual general meetings or maintain extensive records, reducing the administrative burden.
+ Direct taxation benefits
+Income from a sole proprietorship is treated as the personal income of the proprietor and taxed accordingly. This avoids the double taxation scenario faced by companies, simplifying tax filing and potentially reducing tax liabilities.
+ Easy access to bank loans
+Banks and financial institutions often prefer lending to registered proprietorships because the registration provides legitimacy. This makes it easier to open current accounts and obtain business loans.
+ Flexibility in business operations
+Since there is no need to consult partners or shareholders, proprietors can quickly adapt their business strategies, products, or services according to market needs.
+ Privacy of financial information
+Sole Proprietorships enjoy the benefit of financial privacy, as they are not obligated to share their financial details publicly.
+ Less regulatory control
+Sole Proprietorships face less regulatory scrutiny compared to companies and LLPs. This makes it easier to focus on growth without being bogged down by frequent audits or government inspections.
+ Easy Dissolution
+In case the business needs to be closed or sold, dissolving a proprietorship is much easier and faster compared to other forms of business entities, which require extensive paperwork and approvals.
+
+    </p>
   </div>
+</div>
 
-  <!-- CONTENT -->
-  <div class="step-content-box">
-
-    <div class="step-pane active" id="about">
-      <p id="aboutText"></p>
-    </div>
-
-    <div class="step-pane" id="advantages">
-      <ul id="advantages"></ul>
-    </div>
-
-    <div class="step-pane" id="drawbacks">
-      <ul id="drawbacks"></ul>
-    </div>
-
-    <div class="step-pane" id="documents">
-      <ul id="documents"></ul>
-    </div>
-
-    <div class="step-pane" id="process">
-      <ul id="process"></ul>
-    </div>
-
+<!-- DRAWBACKS -->
+<div class="accordion">
+  <button class="accordion-btn">
+    Drawbacks <span>+</span>
+  </button>
+  <div class="accordion-content">
+    <ul>
+      <li>Unlimited personal liability</li>
+      <li>Limited capital raising</li>
+      <li>Limited business life</li>
+      <li>Heavy workload</li>
+      <li>Difficult expansion</li>
+    </ul>
   </div>
+</div>
+
+
+
+<!-- DOCUMENTS -->
+<div class="accordion">
+  <button class="accordion-btn">
+    Documents Required <span>+</span>
+  </button>
+  <div class="accordion-content">
+    <ul>
+      <li>Aadhaar Card</li>
+      <li>PAN Card</li>
+      <li>Bank Statement</li>
+      <li>Business Address Proof</li>
+      <li>Passport Photos</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="accordion">
+  <button class="accordion-btn">
+    Registration Process <span>+</span>
+  </button>
+  <div class="accordion-content">
+    <p>
+      There is no central registration. You must obtain GST, MSME, and Shop Act registrations,
+      and open a current bank account to formalize your business.
+    </p>
+  </div>
+</div>
+
+<!-- REGISTRATIONS -->
+<div class="accordion">
+  <button class="accordion-btn">
+    Required Registrations <span>+</span>
+  </button>
+  <div class="accordion-content">
+    <p><strong>Shop & Establishment:</strong> Legalizes business location</p>
+    <p><strong>MSME (Udyam):</strong> Government benefits</p>
+    <p><strong>GST:</strong> Tax compliance</p>
+    <p><strong>FSSAI:</strong> For food business</p>
+    <p><strong>IEC:</strong> Import/export</p>
+    <p><strong>Trademark:</strong> Brand protection</p>
+  </div>
+</div>
 
 </div>
-<div id="contactFormContainer"></div>
+
 
 <div id="footer"></div>
 
+<!-- JS -->
 <script>
-// HEADER
-fetch("header.html")
-.then(res => res.text())
-.then(data => {
-  document.getElementById("header").innerHTML = data;
 
-  const menuBtn = document.querySelector(".menu-btn");
-  const navLinks = document.querySelector(".nav-links");
+  window.addEventListener("DOMContentLoaded", () => {
 
-  if(menuBtn){
-    menuBtn.onclick = () => navLinks.classList.toggle("show");
-  }
+  Promise.all([
+    fetch("header.html").then(res => res.text()),
+    fetch("footer.html").then(res => res.text())
+  ])
+  .then(([header, footer]) => {
+
+    // Insert Header & Footer
+    document.getElementById("header").innerHTML = header;
+    document.getElementById("footer").innerHTML = footer;
+
+    // ✅ Attach menu button AFTER header loads
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    if(menuBtn && navLinks){
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+
+  })
+  .catch(error => console.error("Error loading header/footer:", error));
+
 });
+const acc = document.querySelectorAll(".accordion");
 
-    // LOAD CONTACT FORM
-fetch("contact.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("contactFormContainer").innerHTML = data;
-  });
+acc.forEach(item => {
+  const btn = item.querySelector(".accordion-btn");
+  const content = item.querySelector(".accordion-content");
 
-// FOOTER
-fetch("footer.html")
-.then(res => res.text())
-.then(data => document.getElementById("footer").innerHTML = data);
+  btn.addEventListener("click", () => {
+    const isOpen = item.classList.contains("active");
 
-// STEPPER LOGIC
-document.querySelectorAll(".step-item").forEach((step, index) => {
-  step.addEventListener("click", () => {
-
-    document.querySelectorAll(".step-item").forEach(s => s.classList.remove("active"));
-    document.querySelectorAll(".step-pane").forEach(p => p.classList.remove("active"));
-
-    step.classList.add("active");
-    document.getElementById(step.dataset.step).classList.add("active");
-
-    document.querySelectorAll(".step-item").forEach((s, i) => {
-      if(i < index){
-        s.classList.add("completed");
-      } else {
-        s.classList.remove("completed");
-      }
+    document.querySelectorAll(".accordion").forEach(i => {
+      i.classList.remove("active");
+      i.querySelector(".accordion-content").style.maxHeight = null;
     });
 
-  });
-});
-
-const bar = document.querySelector(".steps-bar");
-
-document.querySelectorAll(".step-item").forEach((step, index) => {
-  step.addEventListener("click", () => {
-    const total = document.querySelectorAll(".step-item").length - 1;
-    const percent = (index / total) * 100;
-    bar.style.setProperty('--progress-width', percent + '%');
-    bar.style.setProperty('--progress', percent + '%');
-    bar.style.setProperty('--fill', percent + '%');
-    bar.style.setProperty('--line', percent + '%');
-    bar.style.setProperty('--value', percent + '%');
-    bar.style.setProperty('--after-width', percent + '%');
-    bar.style.setProperty('--width', percent + '%');
-
-    bar.style.setProperty('--progress', percent + '%');
-    bar.style.setProperty('--progress-width', percent + '%');
-
-    bar.style.setProperty('--x', percent + '%');
-
-    bar.style.setProperty('--percent', percent + '%');
-
-    bar.style.setProperty('--p', percent + '%');
-
-    bar.style.setProperty('--w', percent + '%');
-
-    bar.style.setProperty('--active-width', percent + '%');
-
-    bar.style.setProperty('--fill-width', percent + '%');
-
-    bar.style.setProperty('--progressBar', percent + '%');
-
-    bar.style.setProperty('--progressLine', percent + '%');
-
-    bar.style.setProperty('--progressFill', percent + '%');
-
-    bar.style.setProperty('--lineWidth', percent + '%');
-
-    bar.style.setProperty('--progressSize', percent + '%');
-
-    bar.style.setProperty('--barWidth', percent + '%');
-
-    bar.style.setProperty('--widthBar', percent + '%');
-
-    bar.style.setProperty('--dynamicWidth', percent + '%');
-
-    bar.style.setProperty('--progressDynamic', percent + '%');
-
-    bar.style.setProperty('--progressValue', percent + '%');
-
-    bar.style.setProperty('--progressPercent', percent + '%');
-
-    bar.style.setProperty('--progressCustom', percent + '%');
-
-    bar.style.setProperty('--progressActive', percent + '%');
-
-    bar.style.setProperty('--progressFinal', percent + '%');
-
-    bar.style.setProperty('--progressNow', percent + '%');
-
-    bar.style.setProperty('--progressLive', percent + '%');
-
-    bar.style.setProperty('--progressUpdate', percent + '%');
-
-    bar.style.setProperty('--progressMove', percent + '%');
-
-    bar.style.setProperty('--progressGrow', percent + '%');
-
-    bar.style.setProperty('--progressExpand', percent + '%');
-
-    bar.style.setProperty('--progressReal', percent + '%');
-
-    bar.style.setProperty('--progressCalc', percent + '%');
-
-    bar.style.setProperty('--progressStep', percent + '%');
-
-    bar.style.setProperty('--progressUI', percent + '%');
-
-    bar.style.setProperty('--progressUX', percent + '%');
-
-    bar.style.setProperty('--progressFinalWidth', percent + '%');
-
-    bar.style.setProperty('--progressBarWidth', percent + '%');
-
-    bar.style.setProperty('--progressLineWidth', percent + '%');
-
-    bar.style.setProperty('--progressWidth', percent + '%');
-
-    bar.style.setProperty('--progressFillWidth', percent + '%');
-
-    bar.style.setProperty('--progressDynamicWidth', percent + '%');
-
-    bar.style.setProperty('--progressActiveWidth', percent + '%');
-
-    bar.style.setProperty('--progressNowWidth', percent + '%');
-
-    bar.style.setProperty('--progressLiveWidth', percent + '%');
-
-    bar.style.setProperty('--progressUpdateWidth', percent + '%');
-
-    bar.style.setProperty('--progressMoveWidth', percent + '%');
-
-    bar.style.setProperty('--progressGrowWidth', percent + '%');
-
-    bar.style.setProperty('--progressExpandWidth', percent + '%');
-
-    bar.style.setProperty('--progressRealWidth', percent + '%');
-
-    bar.style.setProperty('--progressCalcWidth', percent + '%');
-
-    bar.style.setProperty('--progressStepWidth', percent + '%');
-
-    bar.style.setProperty('--progressUIWidth', percent + '%');
-
-    bar.style.setProperty('--progressUXWidth', percent + '%');
-
-    bar.style.setProperty('--progressFinalBar', percent + '%');
-
-    bar.style.setProperty('--progressFinalLine', percent + '%');
-
-    bar.style.setProperty('--progressUltimate', percent + '%');
-
-    bar.style.setProperty('--progressUltimateWidth', percent + '%');
-
-    bar.style.setProperty('--progressFinalUltimate', percent + '%');
-
-    bar.style.setProperty('--progressFinalUltimateWidth', percent + '%');
-
-    bar.style.setProperty('--progressEnd', percent + '%');
-
-    bar.style.setProperty('--progressEndWidth', percent + '%');
-
-    bar.style.setProperty('--progressMax', percent + '%');
-
-    bar.style.setProperty('--progressMaxWidth', percent + '%');
-
-    bar.style.setProperty('--progressDone', percent + '%');
-
-    bar.style.setProperty('--progressDoneWidth', percent + '%');
-
-    bar.style.setProperty('--progressFinish', percent + '%');
-
-    bar.style.setProperty('--progressFinishWidth', percent + '%');
-
-    bar.style.setProperty('--progressFinalFinish', percent + '%');
-
-    bar.style.setProperty('--progressFinalFinishWidth', percent + '%');
-
-    bar.style.setProperty('--progressUltimateFinish', percent + '%');
-
-    bar.style.setProperty('--progressUltimateFinishWidth', percent + '%');
-
-    bar.style.setProperty('--progressAbsolute', percent + '%');
-
-    bar.style.setProperty('--progressAbsoluteWidth', percent + '%');
-
-    bar.style.setProperty('--progressExact', percent + '%');
-
-    bar.style.setProperty('--progressExactWidth', percent + '%');
-
-    bar.style.setProperty('--progressFinalExact', percent + '%');
-
-    bar.style.setProperty('--progressFinalExactWidth', percent + '%');
-
-    bar.style.setProperty('--progressPerfect', percent + '%');
-
-    bar.style.setProperty('--progressPerfectWidth', percent + '%');
-  });
-});
-
-const progress = document.querySelector(".steps-bar");
-
-document.querySelectorAll(".step-item").forEach((step, index) => {
-  step.addEventListener("click", () => {
-
-    const percent = (index / (document.querySelectorAll(".step-item").length - 1)) * 100;
-    progress.style.setProperty('--progress', percent + '%');
-
-    progress.style.setProperty('--progress-width', percent + '%');
-    progress.style.setProperty('--progress-color', '#4f46e5');
-
-    document.querySelector(".steps-bar").style.setProperty('--width', percent + '%');
-
-    document.querySelector(".steps-bar").style.setProperty('--fill', percent + '%');
-
-    document.querySelector(".steps-bar::after");
+    if (!isOpen) {
+      item.classList.add("active");
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
   });
 });
 </script>
