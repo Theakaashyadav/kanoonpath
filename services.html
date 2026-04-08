@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KanoonPath Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+:root{
+  --orange:#ff7a18;
+  --orange2:#ff9a3c;
+  --blue:#2563eb;
+  --teal:#0f766e;
+  --dark:#0f172a;
+}
+
+body{
+  background:#f8fafc;
+  overflow-x:hidden;
+}
+
+/* SAFE BACKGROUND (NO FLICKER) */
+.bg-blur{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.blob{
+  position:absolute;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.6;
+}
+
+.blob1{
+  background:linear-gradient(var(--orange),var(--orange2));
+  top:-100px;
+  left:-100px;
+}
+
+.blob2{
+  background:linear-gradient(var(--blue),var(--teal));
+  bottom:-100px;
+  right:-100px;
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  padding:70px 20px 30px;
+}
+
+.header h1{
+  font-size:42px;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--orange),var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.header p{
+  margin-top:10px;
+  color:#475569;
+}
+
+/* GRID */
+.services-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  padding:50px 60px;
+}
+
+/* CARD (PERFORMANCE FIXED) */
+.service-card{
+  background:#ffffffcc;
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  padding:30px 25px;
+  text-align:center;
+  transition:transform .3s ease, box-shadow .3s ease;
+  border:1px solid rgba(255,255,255,0.4);
+  will-change:transform;
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* ICON */
+.icon-wrap{
+  width:65px;height:65px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--orange),var(--blue));
+  color:#fff;
+  font-size:26px;
+}
+
+.service-card h2{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:var(--dark);
+}
+
+.service-card p{
+  font-size:14px;
+  color:#64748b;
+}
+
+/* BUTTON */
+.service-card a{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 22px;
+  border-radius:25px;
+  background:linear-gradient(90deg,var(--orange),var(--blue));
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  transition:all .3s;
+}
+
+.service-card a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .services-container{padding:20px}
+  .header h1{font-size:30px}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-blur">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+</div>
+
+<div class="header">
+  <h1>KanoonPath Services</h1>
+  <p>Smart Legal Solutions • Fast Filing • Trusted Experts</p>
+</div>
+
+<div class="services-container">
+
+  <div class="service-card">
+    <div class="icon-wrap"><i class="fa-solid fa-rocket"></i></div>
+    <h2>Start A Business</h2>
+    <p>Register your company, launch your startup, and build your business with expert guidance.</p>
+    <a href="Services/Start a Business.html">Explore</a>
+  </div>
+
+  <div class="service-card">
+    <div class="icon-wrap"><i class="fa-solid fa-id-card"></i></div>
+    <h2>License & Registration</h2>
+    <p>Quick and easy government licenses, registrations, and approvals for your business.</p>
+    <a href="Services/License & Registation.html">Explore</a>
+  </div>
+
+  <div class="service-card">
+    <div class="icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+    <h2>Auditing & Taxation</h2>
+    <p>Complete tax filing, auditing, and financial planning solutions by professionals.</p>
+    <a href="Services/Auditing & Taxation.html">Explore</a>
+  </div>
+
+  <div class="service-card">
+    <div class="icon-wrap"><i class="fa-solid fa-scale-balanced"></i></div>
+    <h2>Compliances</h2>
+    <p>Ensure your business stays legally compliant with all regulatory requirements.</p>
+    <a href="Services/Compliances.html">Explore</a>
+  </div>
+
+</div>
+
+</body>
+</html>
