@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KanoonPath - Start A Business</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+
+<style>
+
+/* ===== ROOT VARIABLES (ADDED) ===== */
+:root {
+  --orange: #F57C20;
+  --teal: #1E8C8F;
+  --white: #FFFFFF;
+
+  --shadow-light: rgba(0,0,0,0.08);
+  --shadow-medium: rgba(0,0,0,0.18);
+}
+
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  overflow-x: hidden;
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  animation: float 8s infinite alternate ease-in-out;
+}
+
+
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.header h1 {
+  font-size: 40px;
+  font-weight: 700;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  color: #555;
+}
+
+/* ===== GRID ===== */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== CARD ===== */
+.service-card {
+  position: relative;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 25px var(--shadow-light); /* updated */
+  overflow: hidden;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* TOP BAR */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+}
+
+/* LIGHT EFFECT */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,0.4), transparent 60%);
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 45px var(--shadow-medium); /* updated */
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== ICON ===== */
+.icon i {
+  font-size: 36px;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+}
+
+.service-card:hover .icon i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* ===== TEXT ===== */
+.service-card h3 {
+  margin: 12px 0;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== BUTTON STYLE ===== */
+.service-card button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: none;
+  color: var(--white); /* updated */
+  font-weight: 500;
+  font-size: 14px;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px var(--shadow-medium); /* updated */
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== ANIMATED BG KEYFRAME (kept intact, just placed properly) */
+@keyframes float {
+  from { transform: translateY(0px); }
+  to { transform: translateY(40px); }
+}
+
+</style>
+</head>
+
+<body>
+
+ <div id="header"></div>
+
+<div class="header">
+  <h1>Licenses & Registrations</h1>
+  <p>Select the right registration or license to start and grow your business smoothly </p>
+</div>
+
+<div class="services-container">
+
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-trademark"></i></div>
+    <h3>Trademark Registration</h3>
+    <p>Protect your brand identity legally</p>
+    <button onclick="location.href='/Services/Registrations/trademark.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-industry"></i></div>
+    <h3>MSME Registration</h3>
+    <p>Benefits for small and medium enterprises</p>
+    <button onclick="location.href='/Services/Registrations/msme.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-shop"></i></div>
+    <h3>Shops & Establishments</h3>
+    <p>Legalize your business operations</p>
+    <button onclick="location.href='/Services/Registrations/shop_establishment.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-certificate"></i></div>
+    <h3>ISO Certification</h3>
+    <p>Enhance quality and credibility</p>
+    <button onclick="location.href='/Services/Registrations/iso.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-users"></i></div>
+    <h3>PF/ESI Registration</h3>
+    <p>Employee welfare compliance</p>
+    <button onclick="location.href='/Services/Registrations/pf_esi.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-globe"></i></div>
+    <h3>Import Export Code</h3>
+    <p>Start international trading legally</p>
+    <button onclick="location.href='/Services/Registrations/iec.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-utensils"></i></div>
+    <h3>FSSAI Registration</h3>
+    <p>Mandatory for food businesses</p>
+    <button onclick="location.href='/Services/Registrations/fssai.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+    <h3>NGO Darpan Registration</h3>
+    <p>Government recognition for NGOs</p>
+    <button onclick="location.href='/Services/Registrations/ngo_darpan.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-handshake-angle"></i></div>
+    <h3>CSR Registration</h3>
+    <p>Enable corporate social responsibility funding</p>
+    <button onclick="location.href='/Services/Registrations/csr.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+    <h3>80G & 12A Registration</h3>
+    <p>Tax exemptions for NGOs</p>
+    <button onclick="location.href='/Services/Registrations/80g_12a.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-globe-asia"></i></div>
+    <h3>FCRA Registration</h3>
+    <p>Receive foreign contributions legally</p>
+    <button onclick="location.href='/Services/Registrations/fcra.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-user-shield"></i></div>
+    <h3>Private Security Agency License</h3>
+    <p>Operate security services legally</p>
+    <button onclick="location.href='/Services/Registrations/psara.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+    <h3>Startup India Registration</h3>
+    <p>Get startup recognition and benefits</p>
+    <button onclick="location.href='/Services/Registrations/startup_india.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-key"></i></div>
+    <h3>Digital Signature (DSC)</h3>
+    <p>Secure digital authentication</p>
+    <button onclick="location.href='/Services/Registrations/dsc.html'">Explore</button>
+  </div>
+
+</div>
+
+<div id="footer"></div>
+
+<!-- ===== INTERACTIVE GLOW SCRIPT ===== -->
+<script>
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+  });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  Promise.all([
+    fetch("../header.html").then(res => res.text()),
+    fetch("../footer.html").then(res => res.text())
+  ])
+    .then(([header, footer]) => {
+
+      // ✅ FIX: adjust image paths dynamically
+      const basePath = location.pathname.includes("Services") ? "../" : "";
+
+      const fixedHeader = header.replace(/src="images\//g, `src="${basePath}images/`);
+      const fixedFooter = footer.replace(/src="images\//g, `src="${basePath}images/`);
+
+      // Insert Header & Footer
+      document.getElementById("header").innerHTML = fixedHeader;
+      document.getElementById("footer").innerHTML = fixedFooter;
+
+      // ✅ Attach menu button AFTER header loads
+      const menuBtn = document.querySelector(".menu-btn");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuBtn && navLinks) {
+        menuBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      }
+
+    })
+    .catch(error => console.error("Error loading header/footer:", error));
+
+});
+</script>
+
+</body>
+</html>

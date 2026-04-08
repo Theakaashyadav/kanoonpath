@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KanoonPath - Start A Business</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../style.css">
+
+<style>
+
+/* ===== ROOT VARIABLES (ADDED) ===== */
+:root {
+  --orange: #F57C20;
+  --teal: #1E8C8F;
+  --white: #FFFFFF;
+
+  --shadow-light: rgba(0,0,0,0.08);
+  --shadow-medium: rgba(0,0,0,0.18);
+}
+
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  overflow-x: hidden;
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  animation: float 8s infinite alternate ease-in-out;
+}
+
+
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.header h1 {
+  font-size: 40px;
+  font-weight: 700;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  color: #555;
+}
+
+/* ===== GRID ===== */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== CARD ===== */
+.service-card {
+  position: relative;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 25px var(--shadow-light); /* updated */
+  overflow: hidden;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* TOP BAR */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+}
+
+/* LIGHT EFFECT */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,0.4), transparent 60%);
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 45px var(--shadow-medium); /* updated */
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== ICON ===== */
+.icon i {
+  font-size: 36px;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+}
+
+.service-card:hover .icon i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* ===== TEXT ===== */
+.service-card h3 {
+  margin: 12px 0;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== BUTTON STYLE ===== */
+.service-card button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: none;
+  color: var(--white); /* updated */
+  font-weight: 500;
+  font-size: 14px;
+  background: linear-gradient(90deg,var(--orange),var(--teal)); /* updated */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px var(--shadow-medium); /* updated */
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== ANIMATED BG KEYFRAME (kept intact, just placed properly) */
+@keyframes float {
+  from { transform: translateY(0px); }
+  to { transform: translateY(40px); }
+}
+
+</style>
+</head>
+
+<body>
+
+ <div id="header"></div>
+
+<div class="header">
+  <h1>Compliance Services</h1>
+  <p>Stay compliant, avoid penalties, and keep your business legally strong ✅</p>
+</div>
+
+<div class="services-container">
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-file-lines"></i></div>
+    <h3>Annual Filing of Companies</h3>
+    <p>Ensure compliance with yearly ROC filings</p>
+    <button onclick="location.href='/Services/Compliance/annual_filing_company.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
+    <h3>Annual Filing of LLPs</h3>
+    <p>Maintain LLP compliance with annual returns</p>
+    <button onclick="location.href='/Services/Compliance/annual_filing_llp.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-user-check"></i></div>
+    <h3>Appointment of First Auditor</h3>
+    <p>Mandatory auditor appointment for companies</p>
+    <button onclick="location.href='/Services/Compliance/first_auditor.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-xmark-circle"></i></div>
+    <h3>Strike Off of Company</h3>
+    <p>Close your company legally with ROC</p>
+    <button onclick="location.href='/Services/Compliance/strikeoff_company.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-ban"></i></div>
+    <h3>Strike Off of LLP</h3>
+    <p>Legally close your LLP entity</p>
+    <button onclick="location.href='/Services/Compliance/strikeoff_llp.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-pen-to-square"></i></div>
+    <h3>Change in Company Name</h3>
+    <p>Update your business name legally</p>
+    <button onclick="location.href='/Services/Compliance/change_name.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+    <h3>Change in Registered Office</h3>
+    <p>Shift your company address with approval</p>
+    <button onclick="location.href='/Services/Compliance/change_office.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-bullseye"></i></div>
+    <h3>Change in Company Objects</h3>
+    <p>Modify business activities legally</p>
+    <button onclick="location.href='/Services/Compliance/change_objects.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
+    <h3>Appointment/Resignation of Directors</h3>
+    <p>Update company leadership records</p>
+    <button onclick="location.href='/Services/Compliance/director_changes.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+    <h3>Change in Capital</h3>
+    <p>Increase or modify authorised/paid-up capital</p>
+    <button onclick="location.href='/Services/Compliance/change_capital.html'">Explore</button>
+  </div>
+
+  <div class="service-card">
+    <div class="icon"><i class="fa-solid fa-file-circle-plus"></i></div>
+    <h3>Company Charge Filing</h3>
+    <p>Register or modify company charges</p>
+    <button onclick="location.href='/Services/Compliance/charge_filing.html'">Explore</button>
+  </div>
+
+</div>
+
+<div id="footer"></div>
+
+<!-- ===== INTERACTIVE GLOW SCRIPT ===== -->
+<script>
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+  });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  Promise.all([
+    fetch("../header.html").then(res => res.text()),
+    fetch("../footer.html").then(res => res.text())
+  ])
+    .then(([header, footer]) => {
+
+      // ✅ FIX: adjust image paths dynamically
+      const basePath = location.pathname.includes("Services") ? "../" : "";
+
+      const fixedHeader = header.replace(/src="images\//g, `src="${basePath}images/`);
+      const fixedFooter = footer.replace(/src="images\//g, `src="${basePath}images/`);
+
+      // Insert Header & Footer
+      document.getElementById("header").innerHTML = fixedHeader;
+      document.getElementById("footer").innerHTML = fixedFooter;
+
+      // ✅ Attach menu button AFTER header loads
+      const menuBtn = document.querySelector(".menu-btn");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuBtn && navLinks) {
+        menuBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("show");
+        });
+      }
+
+    })
+    .catch(error => console.error("Error loading header/footer:", error));
+
+});
+</script>
+
+</body>
+</html>
