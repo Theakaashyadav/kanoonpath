@@ -1,6 +1,6 @@
 
-/About        /About.html
+/about        /about.html
 /contact      /contact.html
 /services     #services
-
+/              /index.html
 /*.html       /:splat 301
