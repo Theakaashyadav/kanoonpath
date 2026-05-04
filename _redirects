@@ -1,7 +1,7 @@
 
-/about        /underconstruction.html
+/about        /contact.html
 /contact      /contact.html
 /services     #services
 /              /index.html
-/blogs     /underconstruction.html
+/blogs     /contact.html
 /*.html       /:splat 301
