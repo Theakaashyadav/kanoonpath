@@ -1,5 +1,6 @@
-/gallery      /gallery.html
+
 /about        /about.html
 /contact      /contact.html
+/services     #services
 
 /*.html       /:splat 301
