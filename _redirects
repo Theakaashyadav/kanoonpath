@@ -3,4 +3,5 @@
 /contact      /contact.html
 /services     #services
 /              /index.html
+/underconstruction     /underconstruction.html
 /*.html       /:splat 301
